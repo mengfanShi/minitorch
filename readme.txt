@@ -5,10 +5,10 @@ Sigmoid
 ReLU
 LeakyReLU
 tanh
+Softmax
 *********
 
 *********Loss function
-Softmax
 CrossEntrop
 L2 distance
 L1 distance
