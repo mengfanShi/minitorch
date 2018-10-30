@@ -22,7 +22,7 @@ class Momentum:
     def __init__(self, momentum=0.9, lr=1e-3):
         self.momentum = momentum
         self.lr = lr
-        self.middle = dict()
+        self.param = dict()
 
     def setlr(self, lr):
         self.lr = lr
@@ -31,9 +31,9 @@ class Momentum:
         self.momentum = momentum
 
     def optimize(self, grad, name):
-        cal = self.middle.get(name, np.zeros_like(grad))   # if param name exists in the dict, load it; else create it
+        cal = self.param.get(name, np.zeros_like(grad))   # if param name exists in the dict, load it; else create it
         cal = self.momentum * cal - self.lr * grad
-        self.middle[name] = cal
+        self.param[name] = cal
         return -cal
 
 
@@ -43,7 +43,7 @@ class Adam:
         self.beta2 = beta2
         self.lr = lr
         self.eps = eps
-        self.middle = dict()
+        self.param = dict()
 
     def setbeta1(self, beta1):
         self.beta1 = beta1
@@ -56,17 +56,17 @@ class Adam:
 
     def optimize(self, grad, name):
         # initialize or load
-        m = self.middle.get(name+':m', np.zeros_like(grad))
-        v = self.middle.get(name+':v', np.zeros_like(grad))
-        t = self.middle.get(name+':t', 0)
+        m = self.param.get(name+':m', np.zeros_like(grad))
+        v = self.param.get(name+':v', np.zeros_like(grad))
+        t = self.param.get(name+':t', 0)
 
         # update
         t = t + 1
         m = m * self.beta1 + grad * (1 - self.beta1)
         v = v * self.beta2 + (grad ** 2) * (1 - self.beta2)
-        self.middle[name+':m'] = m
-        self.middle[name+':v'] = v
-        self.middle[name+':t'] = t
+        self.param[name+':m'] = m
+        self.param[name+':v'] = v
+        self.param[name+':t'] = t
 
         m_ = m / (1 - self.beta1 ** t)
         v_ = v / (1 - self.beta2 ** t)

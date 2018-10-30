@@ -46,7 +46,7 @@ class Sigmoid:
 
 
 class LeakyReLU:
-    def __init__(self, slope = 0.1):
+    def __init__(self, slope=0.1):
         self.middle = None
         self.slope = slope
 

@@ -1,7 +1,6 @@
 """
 Build a Network
 """
-import Layer
 
 
 class Network:

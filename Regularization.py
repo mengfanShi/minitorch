@@ -8,10 +8,11 @@ import Initialization
 
 
 class BatchNormal:
-    def __init__(self, num_feature, mode='train', momentum=0.9, eps=1e-5):
+    def __init__(self, name, num_feature, mode='train', momentum=0.9, eps=1e-5):
         self.mode = mode
         self.momentum = momentum
         self.eps = eps
+        self.name = name
         self.mean = np.zeros(shape=[num_feature], dtype='float32')
         self.var = np.zeros(shape=[num_feature], dtype='float32')
         self.middle = None
@@ -65,9 +66,10 @@ class BatchNormal:
 
 
 class Dropout:
-    def __init__(self, mode='train', rate=0.5):
+    def __init__(self, name, mode='train', rate=0.5):
         self.mode = mode
         self.rate = rate
+        self.name = name
         self.scale = 1 / rate
         self.middle = None
 
@@ -90,7 +92,7 @@ class Dropout:
         return grad
 
     def __repr__(self):
-        return 'Regularize : Dropout'
+        return 'Regularize : Dropout({})'.format(self.rate)
 
 
 
