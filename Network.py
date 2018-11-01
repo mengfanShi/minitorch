@@ -51,10 +51,16 @@ class Network:
         return grad
 
     def optimize(self, optimizer):
-        _ = self.backward()
+        # _ = self.backward()
         for layer in self.param_layer:
             for k in layer.param.keys():
                 layer.param[k].data -= optimizer.optimize(layer.param[k].getgrad(), layer.name+k)
+
+    def save_param(self):
+        pass
+
+    def load_param(self):
+        pass
 
     def __repr__(self):
         string = '-----------Network----------\n'

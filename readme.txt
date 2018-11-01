@@ -1,5 +1,5 @@
-This is just a simple structure to train a network.
-
+A simple structure to train a network.
+@Author: Fan
 *********Active function
 Sigmoid
 ReLU

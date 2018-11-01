@@ -35,7 +35,7 @@ class Sigmoid:
         return self.forward(x)
 
     def forward(self, x):
-        self.middle = 1.0 / 1 + np.exp(-x)
+        self.middle = 1.0 / (1 + np.exp(-x))
         return self.middle
 
     def backward(self, grad_in):

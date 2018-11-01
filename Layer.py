@@ -64,7 +64,7 @@ class FullyConnect:
 
     def backward(self, grad_in):
         # grad_in:[N, D2]
-        assert grad_in.shape[0] == self.weight.shape[1]
+        assert grad_in.shape[1] == self.weight.shape[1]
         x = self.middle
         self.bias.setgrad(np.sum(grad_in, axis=0))
         self.weight.setgrad(np.matmul(x.T, grad_in) + self.reg * self.weight.getdata())
