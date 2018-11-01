@@ -40,8 +40,8 @@ def read_label(filename):
 
 
 def trainset():
-    image_file = './data/raw/train-images-idx3-ubyte'
-    label_file = './data/raw/train-labels-idx1-ubyte'
+    image_file = './data/mnist/train-images-idx3-ubyte'
+    label_file = './data/mnist/train-labels-idx1-ubyte'
     image = read_image(image_file, 60000)
     label = read_label(label_file)
     data = dict()
@@ -51,8 +51,8 @@ def trainset():
 
 
 def testset():
-    image_file = './data/raw/t10k-images-idx3-ubyte'
-    label_file = './data/raw/t10k-labels-idx1-ubyte'
+    image_file = './data/mnist/t10k-images-idx3-ubyte'
+    label_file = './data/mnist/t10k-labels-idx1-ubyte'
     image = read_image(image_file, 10000)
     label = read_label(label_file)
     data = dict()
